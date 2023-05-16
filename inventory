@@ -1,0 +1,2 @@
+[test-server]
+3.95.237.102 ansible_ssh_private_key_file=/home/ubuntu/healthcare-project/devtest.pem ansible_user=ubuntu
