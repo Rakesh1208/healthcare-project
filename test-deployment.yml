@@ -1,0 +1,46 @@
+appVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: test-deployment 
+  namespace: test
+  labels:
+    app: health
+spec:
+  replicas: 2
+  selectors:
+    matchLabels:
+      app: health
+    template:
+      metadata:
+        labels:
+          app: health
+              
+      spec:
+        containers:
+
+        - name: health
+          image: rakesh1299/health:1.0
+          ports:
+          - containerPort: 8082
+
+
+
+
+
+---
+appVersion: v1
+kind: Service
+metadata:
+  name: test-service
+  namespace: test
+spec:
+  selector:
+    app: test
+  type: NordPort
+  ports:
+    - name: http
+      port: 8082
+      targetPort: 8082
+      protocal: TCP
+      nodePort: 30100
+      
